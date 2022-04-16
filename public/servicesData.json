@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Teeth Whitening",
+    "img": "https://i.ibb.co/C6VDVTV/service-1.jpg",
+    "price": "80",
+    "description": "Laser teeth whitening allows us to whiten your teeth for as much as 8 shades in just one visit."
+  },
+  {
+    "id": 2,
+    "name": "Dental Implants",
+    "img": "https://i.ibb.co/cNWbdrY/service-2.jpg",
+    "price": "50",
+    "description": "Dental implants are a common procedure of permanently replacing missing teeth without affecting neighboring teeth."
+  },
+  {
+    "id": 3,
+    "name": "Emergency Care",
+    "img": "https://i.ibb.co/5YNHm6b/service-3.jpg",
+    "price": "10",
+    "description": "We are here to help! Do not hesitate to seek urgent dental care if you experience severe tooth pain or bleeding."
+  }
+]
