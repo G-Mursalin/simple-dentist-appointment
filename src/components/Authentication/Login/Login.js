@@ -32,9 +32,6 @@ const Login = () => {
     e.preventDefault();
     // Creating Account
     signInWithEmailAndPassword(email, password);
-    // Clean Input Fields
-    setEmail("");
-    setPassword("");
   };
   // Protected Route
   let location = useLocation();
@@ -55,7 +52,6 @@ const Login = () => {
           name="email"
           placeholder="Email"
           required
-          value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
@@ -69,12 +65,11 @@ const Login = () => {
           name="password"
           placeholder="Password"
           required
-          value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       {loading ? "Please Wait..." : ""}
-      {error?.message}
+      <p className="text-red-700">{error?.message}</p>
       <div className="flex items-center justify-between mt-3 mb-5">
         <button
           className="bg-indigo-500 hover:bg-blue-600 text-white font-light py-2 px-6 rounded focus:outline-none focus:shadow-outline"

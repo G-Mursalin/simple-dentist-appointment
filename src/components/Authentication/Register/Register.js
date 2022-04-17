@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 const Register = () => {
   const navigate = useNavigate();
   // Firebase Hooks
-  const [createUserWithEmailAndPassword, user, loading, error] =
+  const [createUserWithEmailAndPassword, user, loading] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   // React Hooks
   const [agree, setAgree] = useState(true);
@@ -24,10 +24,6 @@ const Register = () => {
   const registerFormHandler = (e) => {
     e.preventDefault();
     createUserWithEmailAndPassword(email, password);
-    // Clean Input Fields
-    setEmail("");
-    setPassword("");
-    setUserName("");
   };
 
   if (user) {
@@ -48,7 +44,6 @@ const Register = () => {
           type="text"
           name="username"
           placeholder="User Name"
-          value={userName}
           onChange={(e) => setUserName(e.target.value)}
         />
       </div>
@@ -62,7 +57,6 @@ const Register = () => {
           name="email"
           placeholder="Email"
           required
-          value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
@@ -76,7 +70,6 @@ const Register = () => {
           name="password"
           placeholder="Password"
           required
-          value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
@@ -95,7 +88,6 @@ const Register = () => {
         </label>
       </div>
       {loading ? "Pease Wait..." : ""}
-      {error?.message}
       <div className="flex items-center justify-between mt-2 mb-5">
         <button
           className={`bg-indigo-500 hover:bg-blue-600 text-white font-light py-2 px-6 rounded focus:outline-none focus:shadow-outline ${
