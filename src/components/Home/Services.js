@@ -15,8 +15,8 @@ const Services = () => {
 
   return (
     <section className="text-gray-600 body-font">
-      <h1 className="text-5xl text-center">Services</h1>
-      <div className="container px-5 py-24 mx-auto">
+      <h1 className="text-5xl text-center font-bold">Services</h1>
+      <div className="container px-5 py-20 mx-auto">
         <div className="flex flex-wrap -m-4">
           {servicesData.map((service) => (
             <Service key={service.id} service={service} />

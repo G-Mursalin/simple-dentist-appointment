@@ -3,10 +3,11 @@ import React from "react";
 // Routing
 import { Routes, Route } from "react-router-dom";
 // Components
-import Header from "./components/Header/Header";
+import Header from "./components/Shared/Header/Header";
 import Home from "./components/Home/Home";
 import Login from "./components/Authentication/Login/Login";
 import Appointment from "./components/Appointment/Appointment";
+import Footer from "./components/Shared/Footer/Footer";
 function App() {
   return (
     <React.Fragment>
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/appointment" element={<Appointment />} />
       </Routes>
+      <Footer />
     </React.Fragment>
   );
 }
