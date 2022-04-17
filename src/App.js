@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Login from "./components/Authentication/Login/Login";
+import Appointment from "./components/Appointment/Appointment";
 function App() {
   return (
     <React.Fragment>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/appointment" element={<Appointment />} />
       </Routes>
     </React.Fragment>
   );
