@@ -9,6 +9,7 @@ import Login from "./components/Authentication/Login/Login";
 import Appointment from "./components/Appointment/Appointment";
 import Footer from "./components/Shared/Footer/Footer";
 import Register from "./components/Authentication/Register/Register";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
 function App() {
   return (
     <React.Fragment>
@@ -19,6 +20,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </React.Fragment>
