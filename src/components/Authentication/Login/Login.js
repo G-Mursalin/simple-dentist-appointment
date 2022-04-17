@@ -1,9 +1,11 @@
 // React-ReactDOM
 import React from "react";
 import { useState } from "react";
+
 // Routing
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 // Components
 import SocialLogin from "../SocialLogin/SocialLogin";
 // Firebase Hooks
@@ -28,9 +30,12 @@ const Login = () => {
     setEmail("");
     setPassword("");
   };
-
+  // Protected Route
+  let location = useLocation();
+  let errorElement;
+  let from = location.state?.from?.pathname || "/";
   if (user) {
-    navigate("/home");
+    navigate(from, { replace: true });
   }
   return (
     <form onSubmit={loginFormHandler} className="container mx-auto px-8 py-24">

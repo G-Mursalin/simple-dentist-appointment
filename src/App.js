@@ -10,6 +10,8 @@ import Appointment from "./components/Appointment/Appointment";
 import Footer from "./components/Shared/Footer/Footer";
 import Register from "./components/Authentication/Register/Register";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
+import RequireAuth from "./components/Authentication/RequireAuth/RequireAuth";
+
 function App() {
   return (
     <React.Fragment>
@@ -18,7 +20,14 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/appointment" element={<Appointment />} />
+        <Route
+          path="/appointment"
+          element={
+            <RequireAuth>
+              <Appointment />
+            </RequireAuth>
+          }
+        />
         <Route path="/register" element={<Register />} />
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
