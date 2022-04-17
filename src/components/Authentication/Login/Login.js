@@ -1,12 +1,39 @@
 // React-ReactDOM
 import React from "react";
+import { useState } from "react";
 // Routing
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // Components
 import SocialLogin from "../SocialLogin/SocialLogin";
+// Firebase Hooks
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "./../../../firebase.init";
+
 const Login = () => {
+  // Routing
+  const navigate = useNavigate();
+  // Firebase Hooks
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+  // React Hooks
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  // Form Handler
+  const loginFormHandler = (e) => {
+    e.preventDefault();
+    // Creating Account
+    signInWithEmailAndPassword(email, password);
+    // Clean Input Fields
+    setEmail("");
+    setPassword("");
+  };
+
+  if (user) {
+    navigate("/home");
+  }
   return (
-    <form className="container mx-auto px-8 py-24">
+    <form onSubmit={loginFormHandler} className="container mx-auto px-8 py-24">
       <h1 className="text-5xl text-center font-bold">Please Login</h1>
       <div className="mb-4">
         <label className="block text-lg font-semibold mb-2" htmlFor="email">
@@ -18,6 +45,8 @@ const Login = () => {
           name="email"
           placeholder="Email"
           required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
       <div className="mb-4">
@@ -29,10 +58,14 @@ const Login = () => {
           type="password"
           name="password"
           placeholder="Password"
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-
-      <div className="flex items-center justify-between mb-5">
+      {loading ? "Please Wait..." : ""}
+      {error?.message}
+      <div className="flex items-center justify-between mt-3 mb-5">
         <button
           className="bg-indigo-500 hover:bg-blue-600 text-white font-light py-2 px-6 rounded focus:outline-none focus:shadow-outline"
           type="submit"
