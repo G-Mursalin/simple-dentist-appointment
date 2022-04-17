@@ -11,6 +11,8 @@ import Footer from "./components/Shared/Footer/Footer";
 import Register from "./components/Authentication/Register/Register";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import RequireAuth from "./components/Authentication/RequireAuth/RequireAuth";
+import Blogs from "./components/Blogs/Blogs";
+import About from "./components/About/About";
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
           }
         />
         <Route path="/register" element={<Register />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/about" element={<About />} />
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
       <Footer />

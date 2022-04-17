@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 // Firebase hook
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
+import { Link } from "react-router-dom";
 const Register = () => {
   const navigate = useNavigate();
   // Firebase Hooks
@@ -86,6 +87,12 @@ const Register = () => {
         >
           REGISTER
         </button>
+        <p className="text-center text-md font-medium">
+          Already have an account?
+          <Link to="/login" className="font-bold text-md text-indigo-600">
+            Login
+          </Link>
+        </p>
       </div>
       <SocialLogin />
     </form>

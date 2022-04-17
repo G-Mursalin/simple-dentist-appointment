@@ -79,6 +79,32 @@ const Header = () => {
             </NavLink>
           </li>
           <li className="mr-6">
+            <NavLink
+              to="/blogs"
+              style={({ isActive }) => {
+                return {
+                  borderBottom: isActive ? "2px solid black" : "",
+                };
+              }}
+              className="inline-block px-2 text-lg text-white"
+            >
+              Blogs
+            </NavLink>
+          </li>
+          <li className="mr-6">
+            <NavLink
+              to="/about"
+              style={({ isActive }) => {
+                return {
+                  borderBottom: isActive ? "2px solid black" : "",
+                };
+              }}
+              className="inline-block px-2 text-lg text-white"
+            >
+              About
+            </NavLink>
+          </li>
+          <li className="mr-6">
             {user ? (
               <p
                 onClick={() => signOut(auth)}
