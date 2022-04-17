@@ -1,6 +1,13 @@
 import React from "react";
-
+// Toastify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Appointment = () => {
+  // Form Handler
+  const appointmentFormHandler = (e) => {
+    e.preventDefault();
+    toast("Thank you for the appointment. See you soon 🙂");
+  };
   return (
     <section className="text-gray-600 body-font relative">
       <div className="container px-5 py-24 mx-auto">
@@ -13,7 +20,10 @@ const Appointment = () => {
             hours.
           </p>
         </div>
-        <div className="lg:w-1/2 md:w-2/3 mx-auto">
+        <form
+          onSubmit={appointmentFormHandler}
+          className="lg:w-1/2 md:w-2/3 mx-auto"
+        >
           <div className="flex flex-wrap -m-2">
             <div className="p-2 w-1/2">
               <div className="relative">
@@ -27,6 +37,7 @@ const Appointment = () => {
                   type="text"
                   id="name"
                   name="name"
+                  required
                   className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
               </div>
@@ -43,6 +54,41 @@ const Appointment = () => {
                   type="email"
                   id="email"
                   name="email"
+                  required
+                  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+              </div>
+            </div>
+            <div className="p-2 w-1/2">
+              <div className="relative">
+                <label
+                  htmlFor="address"
+                  className="leading-7 text-sm text-gray-600"
+                >
+                  Address
+                </label>
+                <input
+                  type="text"
+                  id="address"
+                  name="email"
+                  required
+                  className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                />
+              </div>
+            </div>
+            <div className="p-2 w-1/2">
+              <div className="relative">
+                <label
+                  htmlFor="phone"
+                  className="leading-7 text-sm text-gray-600"
+                >
+                  Phone Number
+                </label>
+                <input
+                  type="number"
+                  id="phone"
+                  name="phone"
+                  required
                   className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
               </div>
@@ -68,8 +114,9 @@ const Appointment = () => {
               </button>
             </div>
           </div>
-        </div>
+        </form>
       </div>
+      <ToastContainer />
     </section>
   );
 };

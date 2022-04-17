@@ -1,7 +1,6 @@
 // React-ReactDOM
 import React from "react";
 import { useState } from "react";
-
 // Routing
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -9,8 +8,14 @@ import { useLocation } from "react-router-dom";
 // Components
 import SocialLogin from "../SocialLogin/SocialLogin";
 // Firebase Hooks
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSendPasswordResetEmail,
+} from "react-firebase-hooks/auth";
 import auth from "./../../../firebase.init";
+// Toastify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   // Routing
@@ -18,6 +23,7 @@ const Login = () => {
   // Firebase Hooks
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
   // React Hooks
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,7 +38,6 @@ const Login = () => {
   };
   // Protected Route
   let location = useLocation();
-  let errorElement;
   let from = location.state?.from?.pathname || "/";
   if (user) {
     navigate(from, { replace: true });
@@ -77,12 +82,15 @@ const Login = () => {
         >
           LOGIN
         </button>
-        <a
-          className="inline-block align-baseline font-bold text-sm text-indigo-600 hover:text-indigo-500"
-          href="#"
+        <p
+          onClick={async () => {
+            await sendPasswordResetEmail(email);
+            toast("Email Send");
+          }}
+          className="inline-block align-baseline font-bold text-sm text-indigo-600 hover:text-indigo-500 cursor-pointer"
         >
-          Forgot Password?
-        </a>
+          Reset Password?
+        </p>
       </div>
       <p className="text-center text-md font-medium">
         Don't have an account?
@@ -91,6 +99,7 @@ const Login = () => {
         </Link>
       </p>
       <SocialLogin />
+      <ToastContainer />
     </form>
   );
 };
