@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import { Link } from "react-router-dom";
+import { useSendEmailVerification } from "react-firebase-hooks/auth";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -23,12 +24,17 @@ const Register = () => {
   // Form Handler
   const registerFormHandler = (e) => {
     e.preventDefault();
+
     createUserWithEmailAndPassword(email, password);
   };
 
   if (user) {
     navigate("/home");
   }
+  // if (user?.user?.emailVerified) {
+  //   navigate("/home");
+  // }
+
   return (
     <form
       onSubmit={registerFormHandler}
